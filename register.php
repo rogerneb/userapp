@@ -7,6 +7,10 @@
 	<meta name="keywords" content="Lorem, Ipsum">
 	<meta name="author" content="Lorem Ipsum">
 
+	<!--Google Fonts-->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
 	<!-- Link to CSS -->
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
 
@@ -21,8 +25,8 @@
 </head>
 <body>
 	<header></header>
-	<section>
-		<article>
+	<section id="section-login">
+		<article id="article-login">
 			<h2>Register</h2>
 			<form onsubmit="return validate_register();" action="action/action.php" method="POST">
 				<div class="question">

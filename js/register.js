@@ -9,6 +9,17 @@ function validate_username(){
 	}
 }
 
+//check if email is empty an shows an error
+function validate_email(){
+	var email = document.getElementById("email").value;
+	if (email == "") {
+		document.getElementById("message_email").innerHTML = "email is necessary";
+	}else{
+		document.getElementById("message_email").innerHTML = "";
+		return true;
+	}
+}
+
 //check if password is empty an shows an error
 function validate_password(){
 	var pass = document.getElementById("password").value;

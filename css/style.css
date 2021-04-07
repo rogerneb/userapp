@@ -1,11 +1,50 @@
-/*LOGIN FORM*/
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: #313B56;
+}
+
+#section-login {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+#article-login {
+  background: #F9F9F9;
+  text-align: center;
+  width: 500px;
+  border-radius: 5px;
+}
+
+#article-login input[type=text], #article-login input[type=password], #article-login input[type=email] {
+  font-size: 18pt;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #56617c;
+}
+
+#article-login input[type=submit] {
+  background: #7286E1;
+  color: white;
+  padding: 5px 25px;
+  border-radius: 5px;
+  border: 0px solid;
+}
+
+#article-login .join-or-login {
+  font-size: 10pt;
+
+}
 
 .error {
   color: red;
-  margin-bottom:0;
+  margin-bottom: 10px;
   height: 15px;
 }
-/*END LOGIN FORM*/
+
 
 
 
