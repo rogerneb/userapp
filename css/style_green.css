@@ -1,0 +1,87 @@
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+header {
+  text-align: center;
+  font-size: 24pt;
+  color: white;
+}
+
+body {
+  background: #2f5439;
+}
+
+#section-login {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+#article-login {
+  background: #F9F9F9;
+  text-align: center;
+  width: 500px;
+  border-radius: 5px;
+}
+
+#article-login input[type=text], #article-login input[type=password], #article-login input[type=email] {
+  font-size: 18pt;
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px solid #557a59;
+}
+
+#article-login input[type=submit] {
+  background: #66a56e;
+  color: white;
+  padding: 5px 25px;
+  border-radius: 5px;
+  border: 0px solid;
+}
+
+#article-login input[type=submit]:hover {
+  background: green;
+}
+
+#article-login .join-or-login {
+  font-size: 10pt;
+
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+  height: 15px;
+}
+
+
+
+
+
+
+/*Media Queries*/
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+
+}

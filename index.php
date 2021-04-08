@@ -14,6 +14,11 @@
 	<!-- Link to CSS -->
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
 
+	<!-- Alternative CSSs -->
+	<!--
+	<link rel="stylesheet" href="css/style_green.css" type="text/css"/>
+	-->
+
 	<!-- External login JS -->
 	<script  type="text/javascript" src="js/login.js"></script>
 
