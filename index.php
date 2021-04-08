@@ -33,7 +33,7 @@
 	<section id="section-login">
 		<article id="article-login">
 			<h2>Log in</h2>
-			<form onsubmit="return validate_login();" action="action/action.php" method="POST">
+			<form onsubmit="return validate_login();" action="action/login.php" method="POST">
 				<div class="question">
 					<input type="text" name="username" id="username" placeholder="username" onblur="validate_username();" required><br>
 					<div class="error" id="message_username"></div>
