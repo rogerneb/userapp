@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	if (isset($_SESSION["username"])){ //if user are loged in go to profile
+		header("Location: profile.php");
+	  die();
+	}
+
+?>
 ﻿<!doctype html>
 <html lang="es">
 <head>

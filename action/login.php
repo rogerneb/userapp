@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 if ($_POST == null) { //if values have never been sent from the form
   header("Location: ..");
   die();
@@ -18,7 +20,8 @@ if ($_POST == null) { //if values have never been sent from the form
     echo "dissabled user";
   }else if($response == 1){
     echo "ok";
-    create_session();
+    $username = filter_var($_POST["username"], FILTER_SANITIZE_STRING);
+    create_session($username); //create session
   }else {
     echo "Unknown error...";
   }
@@ -68,8 +71,11 @@ function login($user_login, $password_login) {
   return $return;
 }
 
-function create_session(){
+function create_session($user){
   //here we will create the sessions
+  $_SESSION["username"] = $user;
+  header("Location: ../profile.php");
+  die();
 }
 
 ?>

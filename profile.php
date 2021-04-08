@@ -1,7 +1,7 @@
 <?php
 	session_start();
-	if (isset($_SESSION["username"])){ //if user are loged in go to profile
-		header("Location: profile.php");
+	if (!isset($_SESSION["username"])){ //if user are not loged in go login
+		header("Location: index.php");
 	  die();
 	}
 
@@ -40,21 +40,10 @@
 	<header>User App</header>
 	<section id="section-login">
 		<article id="article-login">
-			<h2>Log in</h2>
-			<form onsubmit="return validate_login();" action="action/login.php" method="POST">
-				<div class="question">
-					<input type="text" name="username" id="username" placeholder="username" onblur="validate_username();" required><br>
-					<div class="error" id="message_username"></div>
-				</div>
-				<div class="question">
-					<input type="password" name="password" id="password" placeholder="password" onblur="validate_password();" required><br>
-					<div class="error" id="message_password"></div>
-				</div>
-				<input type="checkbox" id="rememberuser" name="rememberuser" value="rememberuser">
-				<label for="rememberuser">Remember username</label><br>
-				<input type="submit" value="Send" >
-			</form>
-			<p class="join-or-login">Don't have an account? <a href="register.php">Join now.</a></p>
+			<h2>Profile</h2>
+			<?php echo "Hello ".$_SESSION["username"]."<br>"; ?>
+			<h1>:)</h1>
+			<a href="action/logout.php">Logout</a>
 		</article>
 	</section>
 	<footer></footer>
