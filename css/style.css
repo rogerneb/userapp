@@ -2,6 +2,12 @@
   font-family: 'Roboto', sans-serif;
 }
 
+header {
+  text-align: center;
+  font-size: 24pt;
+  color: white;
+}
+
 body {
   background: #313B56;
 }
@@ -32,6 +38,10 @@ body {
   padding: 5px 25px;
   border-radius: 5px;
   border: 0px solid;
+}
+
+#article-login input[type=submit]:hover {
+  background: blue;
 }
 
 #article-login .join-or-login {

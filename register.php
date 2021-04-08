@@ -24,7 +24,7 @@
 	<title>User App</title>
 </head>
 <body>
-	<header></header>
+	<header>User App</header>
 	<section id="section-login">
 		<article id="article-login">
 			<h2>Register</h2>
