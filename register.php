@@ -43,7 +43,7 @@
 					<div class="error" id="message_email"></div>
 				</div>
 				<div class="question">
-					<input type="password" name="password" id="password" placeholder="your password" onblur="validate_password();" required><br>
+					<input type="password" name="password" id="password" placeholder="your password" oninput="validate_password();" required><br>
 					<div class="error" id="message_password"></div>
 				</div>
 				<div class="question">
