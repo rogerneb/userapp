@@ -9,14 +9,40 @@ function validate_username(){
 	}
 }
 
-//check if email is empty an shows an error
+//check if email is empty or in incorrect format and shows an error
 function validate_email(){
 	var email = document.getElementById("email").value;
 	if (email == "") {
 		document.getElementById("message_email").innerHTML = "email is necessary";
 	}else{
-		document.getElementById("message_email").innerHTML = "";
-		return true;
+		var email_chars = email.split(""); //array email chars
+		var arroba = false; //contains @?
+		var arroba_position = 0; //in wich position
+		var dot = false; //contains .?
+		var dot_position = 0; //in wich position
+		var domain = false; //have a domain?
+
+		//check if is contains an arroba and dot and save the position of each
+		for (n = 0; n < email_chars.length; n++){ //check char by char
+			if(email_chars[n] == "@"){ //@ exist
+				arroba = true; arroba_position = n;
+			}else	if (email_chars[n] == "."){ //dot exist
+				dot = true; dot_position = n;
+			}
+		}
+
+		//check if exist something after the dot (the domain)
+		if(!(typeof email_chars[dot_position+1] === 'undefined')) {
+    	domain = true;
+		}
+
+		//check if have an arroba, dot, in correct postion and if have domain
+		if (arroba == true && dot == true && arroba_position < dot_position && domain == true) {
+			document.getElementById("message_email").innerHTML = "";
+			return true; //Yes! it's a real email (or it seems like it)
+		}else{
+			document.getElementById("message_email").innerHTML = "this email does not seem correct";
+		}
 	}
 }
 
