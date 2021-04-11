@@ -11,7 +11,7 @@ function checkuser(){ //check if username is not empty and sends data to checkus
 function checkuser_available(user) { //find if the username exists
 	return $.ajax({ //ajax
 		url: "db/checkuser.php", //database retrieve data
-		data:'username='+user, //the username
+		data: {username:user}, //the username
 		type: "POST",
 
 		success: function(answer){ //if its correct the answer of checkuser.php
@@ -74,7 +74,7 @@ function checkemail_available(email){
 			//chekc if this email already exists
 			return $.ajax({ //ajax
 				url: "db/checkemail.php", //database retrieve data
-				data:'email='+email, //the username
+				data: {email:email}, //the username
 				type: "POST",
 
 				success: function(answer){ //if its correct the answer of checkuser.php
@@ -92,8 +92,7 @@ function checkemail_available(email){
 				}
 			});
 
-
-			//return true; //Yes! it's a real email (or it seems like it)
+			//Yes! it's a real email (or it seems like it)
 		}else{
 			document.getElementById("message_email").innerHTML = "this email does not seem correct";
 			document.getElementById('email_control').value = "false";
