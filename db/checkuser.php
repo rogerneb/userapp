@@ -1,26 +1,26 @@
 <?php
 include "../db/database_connect_data.php";
-//sleep(1); //temps d’espera. Es pot comentar si vols que sigui 0
+//sleep(1); //waiting time
 
-//connexió a la base de dades
+//database connect
 $conn = new mysqli($server, $user, $password, $database);
 
-//comprovem connexió
+//check connection
 if ($conn->connect_error) {
   return "DATABASE ERROR: ".$conn->connect_error;
   die();
 }
 
-if(!empty($_POST["username"])) { //si s’han enviat dades pel post
+if(!empty($_POST["username"])) { //if POST is not void
   $username = $_POST["username"];
-  $sql = "SELECT * FROM users WHERE username='$username'"; //construïm consulta
+  $sql = "SELECT * FROM users WHERE username='$username'"; //query
 
-  //llancem la consulta
+  //run the query
   $result = $conn->query($sql);
 
-  if ($result->num_rows == 0) { //si no hi ha resultats, el nom d’usuari està disponible
+  if ($result->num_rows == 0) { //if no results user is available
     echo "available";
-  }else{ //si no, es que ja està utilitzat.
+  }else{ //else, user is not available
     echo "not available";
   }
 }
