@@ -18,11 +18,9 @@ function checkuser_available(user) { //find if the username exists
 			if (answer == "available"){ //if username its available
 				$("#message_username").html(""); //delete de message
 				document.getElementById('username_control').value = "true";
-				//$("#send").html("<input type='submit' value='Register'>"); //show send button
 			}else{ //if not available
-				$("#message_username").html("username not available"); //shows error message
+				$("#message_username").html("username already exists"); //shows error message
 				document.getElementById('username_control').value = "false";
-				//$("#send").html(""); //hide the send button
 			}
 		},
 		error:function (){
@@ -71,7 +69,7 @@ function checkemail_available(email){
 		if (arroba == true && dot == true && arroba_position < dot_position && domain == true) {
 			document.getElementById("message_email").innerHTML = "";
 
-			//chekc if this email already exists
+			//check if this email already exists
 			return $.ajax({ //ajax
 				url: "db/checkemail.php", //database retrieve data
 				data: {email:email}, //the username
@@ -81,11 +79,9 @@ function checkemail_available(email){
 					if (answer == "available"){ //if username its available
 						$("#message_email").html(""); //delete de message
 						document.getElementById('email_control').value = "true";
-						//$("#send").html("<input type='submit' value='Register'>"); //show send button
 					}else{ //if not available
-						$("#message_email").html("email not available"); //shows error message
+						$("#message_email").html("email already exists"); //shows error message
 						document.getElementById('email_control').value = "false";
-						//$("#send").html(""); //hide the send button
 					}
 				},
 				error:function (){
