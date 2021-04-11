@@ -27,6 +27,9 @@
 	<link rel="stylesheet" href="css/style_green.css" type="text/css"/>
 	-->
 
+	<!--JQUERY-->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+
 	<!-- External login JS -->
 	<script  type="text/javascript" src="js/register.js"></script>
 
@@ -43,11 +46,11 @@
 			<h2>Register</h2>
 			<form onsubmit="return validate_register();" action="action/action.php" method="POST">
 				<div class="question">
-					<input type="text" name="username" id="username" placeholder="username" onblur="validate_username();" required><br>
+					<input type="text" name="username" id="username" placeholder="username" oninput="checkuser()" required><br>
 					<div class="error" id="message_username"></div>
 				</div>
 				<div class="question">
-					<input type="email" name="email" id="email" placeholder="email" onblur="validate_email();" required><br>
+					<input type="email" name="email" id="email" placeholder="email" oninput="checkemail();" required><br>
 					<div class="error" id="message_email"></div>
 				</div>
 				<div class="question">
@@ -55,10 +58,17 @@
 					<div class="error" id="message_password"></div>
 				</div>
 				<div class="question">
-					<input type="password" name="password2" id="password2" placeholder="repeat password" onblur="validate_password2();" required><br>
+					<input type="password" name="password2" id="password2" placeholder="repeat password" oninput="validate_password2();" required><br>
 					<div class="error" id="message_password2"></div>
 				</div>
-				<input type="submit" value="Send" >
+
+				<!--control inputs -->
+				<input type="hidden" id="username_control" value="false">
+				<input type="hidden" id="password_control" value="false">
+				<input type="hidden" id="email_control" value="false">
+				<!-- end control inputs -->
+				
+				<span id="send"><input type='submit' value='Register'></span>
 			</form>
 			<p><a href=".">Login</a> if already have an account.</p>
 		</article>

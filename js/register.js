@@ -1,16 +1,47 @@
-//check if username is empty an shows an error
-function validate_username(){
-	var username = document.getElementById("username").value;
-	if (username == "") {
-		document.getElementById("message_username").innerHTML = "username is necessary";
+function checkuser(){ //check if username is not empty and sends data to checkuser
+	user = document.getElementById('username').value;
+	if (user == ""){
+		$("#message_username").html("username is necessary");
 	}else{
-		document.getElementById("message_username").innerHTML = "";
-		return true;
+		console.log(user);
+		checkuser_available(user);
+	}
+}
+
+function checkuser_available(user) { //find if the username exists
+	return $.ajax({ //ajax
+		url: "db/checkuser.php", //database retrieve data
+		data:'username='+user, //the username
+		type: "POST",
+
+		success: function(answer){ //if its correct the answer of checkuser.php
+			if (answer == "available"){ //if username its available
+				$("#message_username").html(""); //delete de message
+				document.getElementById('username_control').value = "true";
+				//$("#send").html("<input type='submit' value='Register'>"); //show send button
+			}else{ //if not available
+				$("#message_username").html("username not available"); //shows error message
+				document.getElementById('username_control').value = "false";
+				//$("#send").html(""); //hide the send button
+			}
+		},
+		error:function (){
+		}
+	});
+}
+
+function checkemail(){ //check if username is not empty and sends data to checkuser
+	email = document.getElementById('email').value;
+	if (email == ""){
+		$("#message_email").html("email is necessary");
+	}else{
+		console.log(email);
+		checkemail_available(email);
 	}
 }
 
 //check if email is empty or in incorrect format and shows an error
-function validate_email(){
+function checkemail_available(email){
 	var email = document.getElementById("email").value;
 	if (email == "") {
 		document.getElementById("message_email").innerHTML = "email is necessary";
@@ -39,9 +70,33 @@ function validate_email(){
 		//check if have an arroba, dot, in correct postion and if have domain
 		if (arroba == true && dot == true && arroba_position < dot_position && domain == true) {
 			document.getElementById("message_email").innerHTML = "";
-			return true; //Yes! it's a real email (or it seems like it)
+
+			//chekc if this email already exists
+			return $.ajax({ //ajax
+				url: "db/checkemail.php", //database retrieve data
+				data:'email='+email, //the username
+				type: "POST",
+
+				success: function(answer){ //if its correct the answer of checkuser.php
+					if (answer == "available"){ //if username its available
+						$("#message_email").html(""); //delete de message
+						document.getElementById('email_control').value = "true";
+						//$("#send").html("<input type='submit' value='Register'>"); //show send button
+					}else{ //if not available
+						$("#message_email").html("email not available"); //shows error message
+						document.getElementById('email_control').value = "false";
+						//$("#send").html(""); //hide the send button
+					}
+				},
+				error:function (){
+				}
+			});
+
+
+			//return true; //Yes! it's a real email (or it seems like it)
 		}else{
 			document.getElementById("message_email").innerHTML = "this email does not seem correct";
+			document.getElementById('email_control').value = "false";
 		}
 	}
 }
@@ -81,10 +136,8 @@ function validate_password(){
 				}
 			}
 			//console.log("n: "+nums, "m: "+minus, "M: "+mayus, "S: "+spec, "T: "+characters.length); //shows password minus, mayus, nums and specialchars
-
 			if (nums != 0 && minus != 0 && mayus != 0 && spec != 0){ //check if have nums, minus, mayus and specs
 				document.getElementById("message_password").innerHTML = "";
-				return true
 			}else{ //shows error
 				document.getElementById("message_password").innerHTML = "Password needs uppercase, lowercase, numbers and special chars";
 			}
@@ -98,18 +151,26 @@ function validate_password2(){
 	var pass2 = document.getElementById("password2").value;
 	if (pass2 == "") {
 		document.getElementById("message_password2").innerHTML = "password is necessary";
+		document.getElementById('password_control').value = "false";
 	}else if (pass != pass2){
 		document.getElementById("message_password2").innerHTML = "passwords don't match";
+		document.getElementById('password_control').value = "false";
 	}else{
-		return true;
+		document.getElementById("message_password2").innerHTML = "";
+		document.getElementById('password_control').value = "true";
 	}
 }
 
 //check the fields and return true or false. If true, the form will be submitted
 function validate_register() {
-	if (validate_username() && validate_password() && validate_password2()){
+	user = document.getElementById('username_control').value;
+	email = document.getElementById('email_control').value;
+	password= document.getElementById('password_control').value;
+
+	if (user == "true" && email == "true" && password == "true"){
 		return true;
-	}else{
+	}else {
+		alert("Errors in form!!!")
 		return false;
 	}
 }
